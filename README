@@ -29,6 +29,18 @@ The plugin stores the reference to the dismissed message in a cookie.
   <p>Why did you dismiss the last message?</p>
   <% end -%>
   
+  # Use your own dismiss text or button, and/or specify a callback to execute after the cookie has been set.
+  <%- dismissible_message('welcome_message', :dismiss_button => 'dismiss_welcome', :callback => 'Effect.BlindUp') do -%>
+    <p>Hide me!</p>
+    <a href="#" id="dismiss_welcome" class="hide" title="Hide">Hide</a>
+    
+    <script type="text/javascript" charset="utf-8">
+      $('dismiss_welcome').observe('click', function(event){
+        dismiss_window_hide_dismissible_welcome_message();
+      });
+    </script>
+  <%- end ->
+  
 = Authors
 
   # Mark Daggett
@@ -36,4 +48,4 @@ The plugin stores the reference to the dismissed message in a cookie.
 = Extra Credit
 
 The cookie implementation for this plugin is based off ideas from Court3 and DanP.
-Rick Olson also helped clean up some of this code to make it more succinct. 
+Rick Olson also helped clean up some of this code to make it more succinct.
