@@ -36,7 +36,7 @@ module Dismissible
       callback = opts[:callback].nil? ? "document.getElementById('#{id}').style.display = 'none'" : "#{opts[:callback]}('#{id}')"
       javascript_tag(%Q{
         function dismiss_window_#{id}() {
-          document.cookie = '#{id} = 1; expires=#{opts[:expires]}; path=/';
+          document.cookie = '#{id}=1; expires=#{opts[:expires]}; path=/';
           #{callback};
         }
       })
